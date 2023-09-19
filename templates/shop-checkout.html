@@ -50,6 +50,78 @@
 
 <body>
 
+<!-- Button to Open the Modal -->
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Order Placed, Thank you...</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Items...
+        <!-- {% for i in cart_items %}
+        <div class="cart-item">
+          <div class="cart-image">
+            <img class="img-fluid" src="{{i.product.item_image.url}}" alt="">
+          </div>
+          <div class="cart-name clearfix">
+            <a href="#">{{ i.product.item_name }} <strong>{{ i.quantity }}</strong></a>
+            <div class="cart-price">
+              <ins>Rs{{  i.product.item_price_offer }}</ins>
+            </div>
+          </div>
+         
+        </div>
+        {%endfor%}
+        <div class="cart-total">
+          <h6 class="mb-15"> GRAND TOTAL RS : {{  grand_total }}</h6>
+
+        </div> -->
+        <table class="table table-responsive">
+          <thead>
+          <tr>
+            <th>Product</th>
+            <th>Name</th>
+            <th>Qty</th>
+            <th>Total</th>
+          </tr>
+          </thead>
+          {% for i in cart_items %}
+          <tbody>
+            <tr>
+              <td><div class="cart-image ">
+                <img class="img-fluid" src="{{i.product.item_image.url}}" alt="">
+              </div></td>
+              <td><p>{{ i.product.item_name }}</p></td>
+              <td><p>{{ i.quantity }}</p></td>
+              <td><p>Rs{{ i.product.item_price_offer }}</p></td>
+            </tr>
+          </tbody>
+          {% endfor %}
+          <tfoot>
+          <tr>
+              <th>GRAND TOTAL</th>
+              <td><h6 class="mb-15">RS : {{  grand_total }}</h6></td>
+              </tr>
+          </tfoot>
+          </table>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="wrapper">
 
 <!--=================================
@@ -1035,11 +1107,13 @@ checkout -->
                    </tr>
                   </tbody>
                 </table>
-                 <a href="#" class="button d-grid">Place Order Now <span class="icon-action-redo"></span></a>
+                 <!-- <a href="#" class="button d-grid">Place Order Now <span class="icon-action-redo"></span></a> -->
+                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                  Place Order Now
+                </button>
                </div>
            </div>
         </div>
-      
     </div>
  </section>
 
